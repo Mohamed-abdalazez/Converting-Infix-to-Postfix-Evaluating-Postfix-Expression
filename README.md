@@ -1,4 +1,4 @@
-## Converting Infix to Postfix Evaluating Postfix Expression.
+## Converting Infix to Postfix and Evaluating Postfix Expression.
 
 
 **precedence**

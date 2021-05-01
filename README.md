@@ -1,4 +1,4 @@
-## Converting-Infix-to-Postfix-Evaluating-Postfix-Expression.
+## Converting Infix to Postfix Evaluating Postfix Expression.
 
 
 **precedence**
@@ -21,5 +21,6 @@
 
 **Sample input :** 
 7 - (7 - 8 / 2 / 2) * ((7 - 2) * 3 – 6)
+
 **output :** 
 7 8 2 / 2 / - 7 2 - 3 * 6 - * 

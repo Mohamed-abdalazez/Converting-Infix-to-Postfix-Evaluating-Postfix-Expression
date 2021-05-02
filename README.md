@@ -38,5 +38,5 @@ Its value is : 45
 
 7 8 2 / 2 / - 7 2 - 3 * 6 - *  
 
-Its value is : 45
+**Its value is :** 45
 

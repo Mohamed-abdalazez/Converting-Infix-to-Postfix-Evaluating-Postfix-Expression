@@ -32,11 +32,11 @@ Its value is : 45
 
 **Type an infix expression and press Enter**
 
-**(7 - 8 / 2 / 2) * (( 7 - 2) * 3 - 6 )**
+(7 - 8 / 2 / 2) * (( 7 - 2) * 3 - 6 )
 
 **The Postfix form is**
 
-**7 8 2 / 2 / - 7 2 - 3 * 6 - * ** 
+7 8 2 / 2 / - 7 2 - 3 * 6 - *  
 
-**Its value is : 45**
+Its value is : 45
 

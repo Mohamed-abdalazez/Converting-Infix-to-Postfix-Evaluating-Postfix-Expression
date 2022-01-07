@@ -3,10 +3,10 @@ using namespace std;
 
 /**
  *
- * Project : Converting Infix to Postfix & Evaluating Postfix Expression. 
+ * Project : Converting Infix to Postfix & Evaluating Postfix Expression.
  * author  : Mohamed Abdalazez Abdallah Mohamed
  *
-**/
+ **/
 
 int precedence(char c)
 {
@@ -19,18 +19,23 @@ int precedence(char c)
   return -1;
 }
 
-int operation(int a, int b, string c)
+int operation(int b, int a, string c)
 {
   if (c == "+")
-    return a + b;
+    return b + a;
   else if (c == "-")
-    return a - b;
+    return b - a;
   else if (c == "*")
-    return a * b;
+    return b * a;
   else if (c == "/")
-    return a / b;
+  {
+    if (a != 0)
+      return b / a;
+    else
+      return -1;
+  }
   else if (c == "%")
-    return a % b;
+    return b % a;
   else
     return -1;
 }
@@ -127,12 +132,14 @@ int Evaluating_A_PostfixExpression(vector<string> Post)
   stack<int> operand, temp;
   for (auto it : Post)
   {
+
     if (!isOperand(it) && !it.empty())
     {
+      // cout << "hi : " << it << endl;
       stringstream conv(it);
-      int num = 0;
+      int num = -1;
       conv >> num;
-      if (num != 0)
+      if (num != -1)
         operand.push(num);
     }
     if (isOperand(it))
@@ -142,12 +149,18 @@ int Evaluating_A_PostfixExpression(vector<string> Post)
       operand.pop();
       b = operand.top();
       operand.pop();
+      if (a == 0 && it == "/")
+      {
+        ans = -1;
+        goto done;
+      }
       sum = operation(b, a, it);
       operand.push(sum);
       if (!operand.empty())
         ans = operand.top();
     }
   }
+done:
   return ans;
 }
 
@@ -156,11 +169,19 @@ int main()
   string s;
   printf("Type an infix expression and press Enter\n");
   getline(cin, s);
-  printf("The Postfix form is\n");
-  for (auto it : convertFromInfixToPostfix(s))
-    cout << it;
-  printf("\n");
-  printf("Its value is : ");
-  cout << Evaluating_A_PostfixExpression(convertFromInfixToPostfix(s)) << endl;
+  int value = Evaluating_A_PostfixExpression(convertFromInfixToPostfix(s));
+  if (value == -1)
+  {
+    cout << "Math ERROR\n";
+  }
+  else
+  {
+    printf("The Postfix form is\n");
+    for (auto it : convertFromInfixToPostfix(s))
+      cout << it;
+    printf("\n");
+    printf("Its value is : ");
+    cout << value << endl;
+  }
   return 0;
-} 
+}
